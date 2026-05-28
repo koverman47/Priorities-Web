@@ -232,6 +232,46 @@ h2 {
   margin-top: 12px;
 }
 
+.policy-page {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+.policy-content {
+  max-width: 780px;
+}
+
+.policy-content h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+}
+
+.policy-content h2 {
+  margin: 44px 0 14px;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.policy-content p,
+.policy-content li {
+  color: var(--priority-gray);
+  font-size: 1.08rem;
+}
+
+.policy-content a {
+  color: var(--priority-green-dark);
+  font-weight: 700;
+}
+
+.policy-content ul {
+  margin: 0 0 24px;
+  padding-left: 22px;
+}
+
+.policy-updated {
+  margin-bottom: 32px;
+}
+
 .site-footer {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
