@@ -147,6 +147,7 @@ h2 {
 }
 
 .description,
+.purpose,
 .section p {
   color: var(--priority-gray);
   font-size: 1.08rem;
@@ -160,8 +161,6 @@ h2 {
 .purpose {
   max-width: 610px;
   margin-bottom: 0;
-  color: var(--priority-gray);
-  font-size: 1.08rem;
   font-weight: 700;
 }
 
