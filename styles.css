@@ -154,14 +154,15 @@ h2 {
 
 .description {
   max-width: 610px;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
+.purpose {
+  max-width: 610px;
+  margin-bottom: 0;
+  color: var(--priority-green-dark);
+  font-size: 1.08rem;
+  font-weight: 700;
 }
 
 .button {
@@ -230,6 +231,10 @@ h2 {
 
 .section .button {
   margin-top: 12px;
+}
+
+.coffee-fund {
+  padding-bottom: 56px;
 }
 
 .policy-page {
@@ -328,7 +333,6 @@ h2 {
     font-size: 3.5rem;
   }
 
-  .hero-actions,
   .button {
     width: 100%;
   }
