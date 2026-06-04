@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A detailed explanation of the Priorities scoring formula."
+    >
+    <title>Secret Formula | Priorities</title>
+    <link rel="icon" type="image/png" href="../assets/priorities-logo.png">
+    <link rel="apple-touch-icon" href="../assets/priorities-logo.png">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="../" aria-label="Priorities home">
+          <img class="brand-mark" src="../assets/priorities-logo.png" alt="" aria-hidden="true">
+          <span>Priorities</span>
+        </a>
+        <div class="nav-links">
+          <a href="../#support">Contact</a>
+          <a href="../privacy/">Privacy</a>
+          <a class="nav-button" href="https://ko-fi.com/kirbyoverman">Donate</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="formula-page">
+      <article class="formula-content">
+        <p class="eyebrow">Scoring Model</p>
+        <h1>Priorities Scoring Formula</h1>
+        <p class="formula-lead">
+          The Priorities score is a human-centered ranking model. It is designed
+          to respect deadlines when reality demands it, honor a user's task-size
+          preference, and allow lightweight manual adjustment without making the
+          queue feel arbitrary.
+        </p>
+
+        <section class="formula-section" aria-labelledby="formula-title">
+          <h2 id="formula-title">The Formula</h2>
+
+          <div class="equation-board" aria-label="Final score formula">
+            <math display="block">
+              <mrow>
+                <mi>P</mi>
+                <mo>=</mo>
+                <mrow>
+                  <mo>(</mo>
+                  <mi>deadlineScore</mi>
+                  <mo>+</mo>
+                  <mi>sizeScore</mi>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mi>β</mi>
+                  </mfrac>
+                  <mo>)</mo>
+                </mrow>
+                <mo>&#x2062;</mo>
+                <mi>μ</mi>
+              </mrow>
+            </math>
+          </div>
+          <p class="formula-note">
+            Here, <span class="inline-math">P</span> is the Priority Score: the
+            single ranking value used to order tasks in the queue.
+          </p>
+
+          <div class="equation-grid">
+            <div class="equation-card">
+              <h3>Deadline pressure</h3>
+              <math display="block">
+                <mrow>
+                  <mi>deadlineScore</mi>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mi>Δ</mi>
+                    <msup>
+                      <mrow>
+                        <mo>(</mo>
+                        <mi>max</mi>
+                        <mo>(</mo>
+                        <mfrac>
+                          <mrow>
+                            <mi>δ</mi>
+                            <mo>-</mo>
+                            <mi>τ</mi>
+                          </mrow>
+                          <mi>τ</mi>
+                        </mfrac>
+                        <mo>,</mo>
+                        <mn>0</mn>
+                        <mo>)</mo>
+                        <mo>+</mo>
+                        <mi>&#x03B5;</mi>
+                        <mo>)</mo>
+                      </mrow>
+                      <mi>θ</mi>
+                    </msup>
+                  </mfrac>
+                </mrow>
+              </math>
+            </div>
+
+            <div class="equation-card">
+              <h3>Task size normalization</h3>
+              <math display="block">
+                <mrow>
+                  <mi>η</mi>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mrow>
+                      <mi>log</mi>
+                      <mo>(</mo>
+                      <mi>τ</mi>
+                      <mo>)</mo>
+                    </mrow>
+                    <mrow>
+                      <mi>log</mi>
+                      <mo>(</mo>
+                      <mi>Τ</mi>
+                      <mo>)</mo>
+                    </mrow>
+                  </mfrac>
+                </mrow>
+              </math>
+            </div>
+
+            <div class="equation-card">
+              <h3>Task size preference</h3>
+              <math display="block">
+                <mrow>
+                  <mi>sizeScore</mi>
+                  <mo>=</mo>
+                  <mi>σ</mi>
+                  <mo>&#x2062;</mo>
+                  <mrow>
+                    <mo>(</mo>
+                    <mn>0.5</mn>
+                    <mo>+</mo>
+                    <mi>ξ</mi>
+                    <mo>&#x2062;</mo>
+                    <mrow>
+                      <mo>(</mo>
+                      <mi>η</mi>
+                      <mo>-</mo>
+                      <mn>0.5</mn>
+                      <mo>)</mo>
+                    </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                </mrow>
+              </math>
+            </div>
+          </div>
+
+          <div class="equation-board expanded-equation" aria-label="Expanded final score formula">
+            <p class="equation-label">Expanded</p>
+            <math display="block">
+              <mrow>
+                <mi>P</mi>
+                <mo>=</mo>
+                <mrow>
+                  <mo>(</mo>
+                  <mfrac>
+                    <mi>Δ</mi>
+                    <msup>
+                      <mrow>
+                        <mo>(</mo>
+                        <mi>max</mi>
+                        <mo>(</mo>
+                        <mfrac>
+                          <mrow>
+                            <mi>δ</mi>
+                            <mo>-</mo>
+                            <mi>τ</mi>
+                          </mrow>
+                          <mi>τ</mi>
+                        </mfrac>
+                        <mo>,</mo>
+                        <mn>0</mn>
+                        <mo>)</mo>
+                        <mo>+</mo>
+                        <mi>&#x03B5;</mi>
+                        <mo>)</mo>
+                      </mrow>
+                      <mi>θ</mi>
+                    </msup>
+                  </mfrac>
+                  <mo>+</mo>
+                  <mi>σ</mi>
+                  <mo>&#x2062;</mo>
+                  <mrow>
+                    <mo>(</mo>
+                    <mn>0.5</mn>
+                    <mo>+</mo>
+                    <mi>ξ</mi>
+                    <mo>&#x2062;</mo>
+                    <mrow>
+                      <mo>(</mo>
+                      <mi>η</mi>
+                      <mo>-</mo>
+                      <mn>0.5</mn>
+                      <mo>)</mo>
+                    </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mi>β</mi>
+                  </mfrac>
+                  <mo>)</mo>
+                </mrow>
+                <mo>&#x2062;</mo>
+                <mi>μ</mi>
+              </mrow>
+            </math>
+          </div>
+        </section>
+
+        <section class="formula-section" aria-labelledby="variables-title">
+          <h2 id="variables-title">Variable Definitions</h2>
+          <dl class="definition-list">
+            <div><dt><var>P</var></dt><dd>Priority Score. This is the task's final ranking value; higher scores appear earlier in the queue.</dd></div>
+            <div><dt><var>deadlineScore</var></dt><dd>The nonlinear urgency score created by the relationship between time remaining and estimated time required.</dd></div>
+            <div><dt><var>sizeScore</var></dt><dd>The score created by the user's preference for quicker tasks, larger tasks, or balanced task size.</dd></div>
+            <div><dt><var>Δ</var></dt><dd>Deadline weight. Constant: <strong>100</strong>.</dd></div>
+            <div><dt><var>θ</var></dt><dd>Deadline curve. This comes from the Deadline Prioritization setting and controls how sharply urgency ramps.</dd></div>
+            <div><dt><var>δ</var></dt><dd>Time until the task's deadline, measured in minutes.</dd></div>
+            <div><dt><var>τ</var></dt><dd>Estimated completion time in minutes, clamped to at least 1 minute.</dd></div>
+            <div><dt><var>&#x03B5;</var></dt><dd>A small positive value that prevents division by zero and controls the emergency ceiling. Constant: <strong>0.1</strong>.</dd></div>
+            <div><dt><var>σ</var></dt><dd>Size weight. Constant: <strong>100</strong>.</dd></div>
+            <div><dt><var>ξ</var></dt><dd>The user's Task Size Preference mapped to a numeric value from -1 to 1.</dd></div>
+            <div><dt><var>Τ</var></dt><dd>Maximum estimate used for size normalization. Constant: <strong>720 minutes</strong>, or 12 hours.</dd></div>
+            <div><dt><var>β</var></dt><dd>The task priority number selected when creating or editing a task. Lower numbers matter more because the formula uses <span class="inline-math">1 / β</span>.</dd></div>
+            <div><dt><var>μ</var></dt><dd>Manual multiplier. Default is 1. Values above 1 increase the total score; values below 1 reduce it.</dd></div>
+          </dl>
+        </section>
+
+        <section class="formula-section" aria-labelledby="settings-title">
+          <h2 id="settings-title">User Setting Mappings</h2>
+          <div class="table-pair">
+            <table class="formula-table">
+              <caption>Deadline Prioritization</caption>
+              <thead>
+                <tr><th>Setting</th><th><var>θ</var></th><th>Behavior</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ASAP</td><td>1.0</td><td>Pressure appears earlier and more steadily.</td></tr>
+                <tr><td>Early</td><td>1.3</td><td>Pressure remains noticeable before the task is close to urgent.</td></tr>
+                <tr><td>Balanced</td><td>1.6</td><td>A middle setting between early pressure and last-minute pressure.</td></tr>
+                <tr><td>Close</td><td>1.9</td><td>Pressure stays quieter until usable slack becomes tight.</td></tr>
+                <tr><td>Last Minute</td><td>2.2</td><td>Pressure stays quiet longest, then ramps sharply near the deadline.</td></tr>
+              </tbody>
+            </table>
+
+            <table class="formula-table">
+              <caption>Task Size Preference</caption>
+              <thead>
+                <tr><th>Setting</th><th><var>ξ</var></th><th>Behavior</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Quick Wins</td><td>-1.0</td><td>Strongly favors shorter tasks.</td></tr>
+                <tr><td>Shorter</td><td>-0.5</td><td>Mildly favors shorter tasks.</td></tr>
+                <tr><td>Balanced</td><td>0.0</td><td>Gives all task sizes the same neutral size score.</td></tr>
+                <tr><td>Larger</td><td>0.5</td><td>Mildly favors larger tasks.</td></tr>
+                <tr><td>Big Tasks</td><td>1.0</td><td>Strongly favors larger tasks.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="formula-section" aria-labelledby="philosophy-title">
+          <h2 id="philosophy-title">Philosophy</h2>
+          <p>
+            The formula is not trying to be a pure academic scheduling optimizer.
+            It is designed to reduce the friction between deciding what to do and
+            actually doing it. Deadline pressure, task size preference, and a
+            small task-priority tie breaker each play a distinct role.
+          </p>
+          <p>
+            Humans do not experience time-to-deadline linearly. A task due soon
+            only becomes truly urgent when usable slack starts disappearing.
+            That is why the formula uses relative slack instead of raw time
+            remaining.
+          </p>
+          <p>
+            Task size is also nonlinear. The perceived jump from a 1-minute task
+            to a 30-minute task is much larger than the jump from a 5-hour task
+            to a 5.5-hour task, so the model uses a logarithmic size scale.
+          </p>
+          <p>
+            The manual multiplier wraps the whole result. A user can intentionally
+            raise or lower a task without changing the meaning of the underlying
+            deadline, size, or priority components.
+          </p>
+        </section>
+
+        <section class="formula-section" aria-labelledby="principles-title">
+          <h2 id="principles-title">Design Principles</h2>
+          <ol class="principles-list">
+            <li>Deadlines should be quiet when there is plenty of usable slack and loud when that slack is disappearing.</li>
+            <li>Estimated task size should reflect human perception, not raw minutes on a linear ruler.</li>
+            <li>User preferences should change the shape of the ranking without creating confusing negative scores.</li>
+            <li>Task priority should resolve close calls without becoming a second hidden ranking system.</li>
+            <li>The manual multiplier should stay simple: increase or decrease the whole score.</li>
+          </ol>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kirby Overman. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
